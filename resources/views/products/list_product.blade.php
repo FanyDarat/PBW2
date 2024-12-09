@@ -4,12 +4,12 @@
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     </x-slot>
     <div class="container">
-        
+
         <label>Radius</label>
-        
+
         <input type="number" name="radius" id="radius" min=1 max=15 value="10" />
         <button class="btn btn-primary" id="locateMe">Locate Me</button>
-        
+
         <div id="map" style="height: 500px;"></div>
         <script>
             // Inisialisasi peta
@@ -25,13 +25,13 @@
             // Fetch produk dari API
             function fetchProducts(lat, lng, rad) {
                 markersLayer.clearLayers();
-                fetch(`/api/products?latitude=${lat}&longtitude=${lng}&radius=${rad}`)
+                fetch(`/api/products?latitude=${lat}&longitude=${lng}&radius=${rad}`)
                     .then(response => response.json())
                     .then(data => {
                         data.forEach(product => {
                             // Buat marker untuk produk
 
-                            const marker = L.marker([product.latitude, product.longtitude])
+                            const marker = L.marker([product.latitude, product.longitude])
                                 .bindPopup(`<b>${product.name}</b><br>${product.detail}`);
 
                             // Tambahkan marker ke Layer Group

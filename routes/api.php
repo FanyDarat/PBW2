@@ -9,13 +9,13 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/products', function (Request $request) {
     $latitude = $request->input('latitude');
-    $longtitude = $request->input('longtitude');
+    $longitude = $request->input('longitude');
     $radius = $request->input('radius', 10); // default radius 10 km
-    
+
     $products = Product::select('*')
         ->selectRaw(
-            "(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longtitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance",
-            [$latitude, $longtitude, $latitude]
+            "(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance",
+            [$latitude, $longitude, $latitude]
         )
         ->having('distance', '<=', $radius)
         ->orderBy('distance', 'asc')

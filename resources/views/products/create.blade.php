@@ -58,8 +58,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="longtitude">Longitude</label>
-                        <input type="text" id="longtitude" name="longtitude" class="form-control" readonly required>
+                        <label for="longitude">Longitude</label>
+                        <input type="text" id="longitude" name="longitude" class="form-control" readonly required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 pt-2">
@@ -72,7 +72,7 @@
             </div>
         </form>
     </div>
-    <x-slot name="page_script">
+    
         <script>
             // Inisialisasi peta
             var map = L.map('map').setView([-6.200000, 106.816666], 13);
@@ -106,9 +106,9 @@
                 var lat = e.latlng.lat;
                 var lng = e.latlng.lng;
 
-                // Perbarui form latitude dan longtitude
+                // Perbarui form latitude dan longitude
                 document.getElementById('latitude').value = lat;
-                document.getElementById('longtitude').value = lng;
+                document.getElementById('longitude').value = lng;
 
                 // Tambahkan atau pindahkan marker
                 if (marker) {
@@ -118,6 +118,4 @@
                 }
             });
         </script>
-    </x-slot>
 </x-app-layout>
-

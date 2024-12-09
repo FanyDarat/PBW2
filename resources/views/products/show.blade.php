@@ -41,7 +41,7 @@
         <script>
             //Get Pproduct Coordinates From PHP
             const productLatitude = {{  $product->latitude }};
-            const productLongitude = {{  $product->longtitude }};
+            const productLongitude = {{  $product->longitude }};
             const productName = "{{ $product->name }}";
 
             // Initialize the map
